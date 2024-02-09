@@ -17,7 +17,7 @@ type TSidebar = {
   children?: TSidebar[];
 };
 
-const adminPaths = [
+export const adminPaths = [
   {
     name: "Dashboard",
     path: "dashboard",
