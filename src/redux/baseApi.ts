@@ -1,6 +1,7 @@
 import { BaseQueryFn, FetchArgs, FetchBaseQueryError, createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { RootState } from "./store";
 import { logOut, setUser } from "./features/auth/authSlice";
+import { toast } from "sonner";
 
 
 const baseQuery = fetchBaseQuery({
@@ -17,6 +18,9 @@ const baseQuery = fetchBaseQuery({
 
 const baseQueryWithRefreshToken: BaseQueryFn<FetchArgs, unknown, FetchBaseQueryError> = async (args, api, extraOptions) => {
   let result = await baseQuery(args, api, extraOptions)
+  if (result?.error?.status === 404) {
+    toast.error(result.error.data.message || 'api not found');
+  }
   if (result.error?.status === 401) {
     const res = await fetch('http://localhost:5000/api/v1/auth/refresh-token', {
       method: 'POST',
