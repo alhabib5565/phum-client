@@ -8,3 +8,9 @@ export type TAcademicSemester = {
     createdAt: string
     updatedAt: string
 }
+
+
+export type TAcademicDepartment = {
+    _id: string,
+    name: string
+}

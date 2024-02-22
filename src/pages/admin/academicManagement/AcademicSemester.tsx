@@ -1,13 +1,13 @@
-import { useAcademicSemesterQuery } from "../../../redux/features/admin/academicManagementApi";
 import { Table } from "antd";
 import type { TableColumnsType, TableProps } from "antd";
 import { TAcademicSemester } from "../../../type/academicManagement.type";
 import { useState } from "react";
 import { TQueryParams } from "../../../type/gobal";
+import { useGetAllAcademicSemesterQuery } from "../../../redux/features/admin/academicManagementApi";
 
 const AcademicSemester = () => {
   const [params, setParams] = useState<TQueryParams[]>();
-  const { data: semesterData } = useAcademicSemesterQuery(params);
+  const { data: semesterData } = useGetAllAcademicSemesterQuery(params);
   const data = semesterData?.data?.map(
     ({ name, endMonth, startMonth, _id, year }) => ({
       key: _id,
