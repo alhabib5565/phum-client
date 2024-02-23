@@ -13,6 +13,14 @@ const userManagementApi = baseApi.injectEndpoints({
 
             })
         }),
+        createFaculty: builder.mutation({
+            query: (studnetData) => ({
+                url: '/users/create-faculty',
+                method: 'POST',
+                body: studnetData
+
+            })
+        }),
         getStudents: builder.query({
             query: (args) => {
                 console.log(args, 'from api')
@@ -37,4 +45,4 @@ const userManagementApi = baseApi.injectEndpoints({
     })
 })
 
-export const { useCreateStudentMutation, useGetStudentsQuery } = userManagementApi
+export const { useCreateStudentMutation, useGetStudentsQuery, useCreateFacultyMutation } = userManagementApi

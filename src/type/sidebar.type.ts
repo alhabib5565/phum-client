@@ -11,4 +11,4 @@ export type TSidebar = {
     key: string;
     label: ReactNode;
     children?: TSidebar[];
-};
+} | undefined;
