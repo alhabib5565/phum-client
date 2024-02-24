@@ -23,7 +23,6 @@ const userManagementApi = baseApi.injectEndpoints({
         }),
         getStudents: builder.query({
             query: (args) => {
-                console.log(args, 'from api')
                 const searchParams = new URLSearchParams()
                 if (args) {
                     args.forEach((arg: TQueryParams) => searchParams.append(arg.name, arg.value as string))
@@ -42,7 +41,29 @@ const userManagementApi = baseApi.injectEndpoints({
             }
 
         }),
+        getFaculties: builder.query({
+            query: (args) => {
+                console.log(args, 'from api')
+                const searchParams = new URLSearchParams()
+                if (args) {
+                    args.forEach((arg: TQueryParams) => searchParams.append(arg.name, arg.value as string))
+                }
+                return {
+                    url: '/faculties',
+                    method: 'GET',
+                    params: searchParams
+                }
+            },
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            transformResponse: (response: TResponse<any>) => {
+                return {
+                    data: response.data,
+                    meta: response.meta
+                }
+            }
+
+        }),
     })
 })
 
-export const { useCreateStudentMutation, useGetStudentsQuery, useCreateFacultyMutation } = userManagementApi
+export const { useCreateStudentMutation, useGetStudentsQuery, useCreateFacultyMutation, useGetFacultiesQuery } = userManagementApi

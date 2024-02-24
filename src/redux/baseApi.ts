@@ -52,7 +52,8 @@ const baseQueryWithRefreshToken: BaseQueryFn<FetchArgs, unknown, FetchBaseQueryE
 const baseApi = createApi({
   reducerPath: 'baseApi',
   baseQuery: baseQueryWithRefreshToken,
-  endpoints: () => ({})
+  endpoints: () => ({}),
+  tagTypes: ['semester', 'courses']
 })
 
 export default baseApi
