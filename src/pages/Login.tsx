@@ -35,8 +35,8 @@ const Login = () => {
   };
 
   const defaultValues = {
-    id: "A-0002",
-    password: "admin123",
+    id: "2027030001",
+    password: "student123",
   };
 
   return (

@@ -19,6 +19,9 @@ const genders = [
 
 const bloodGroups = ['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-']
 
+const weekdays = ['Sat', 'Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri'];
+
+
 
 export const monthOptions = monthNames.map((item) => ({
     value: item,
@@ -35,3 +38,7 @@ export const bloodGroupOptions = bloodGroups.map(bloodGroup => ({
     label: bloodGroup
 }))
 
+export const weekDaysOptions = weekdays.map((item) => ({
+    value: item,
+    label: item,
+}));

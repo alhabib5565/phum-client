@@ -1,7 +1,6 @@
-import { TAcademicDepartment, TAcademicSemester } from "../../../type/academicManagement.type";
+import { TAcademicDepartment, TAcademicFaculty, TAcademicSemester } from "../../../type/academicManagement.type";
 import { TQueryParams, TResponse } from "../../../type/gobal";
 import baseApi from "../../baseApi";
-
 
 const academicManagementApi = baseApi.injectEndpoints({
     endpoints: (builder) => ({
@@ -55,7 +54,20 @@ const academicManagementApi = baseApi.injectEndpoints({
                 }
             }
         }),
+        getAcademicFaculties: builder.query({
+            query: () => {
+                return { url: '/academic-faculties', method: 'GET' };
+            },
+            transformResponse: (response: TResponse<TAcademicFaculty[]>) => {
+                console.log(response, 'form academic management api')
+                return {
+                    data: response.data,
+                    meta: response.meta,
+                };
+            },
+        }),
+
     })
 })
 
-export const { useGetAllAcademicSemesterQuery, useCreateAcademicSemesterMutation, useCreateAcademicDepartmentMutation, useGetAllAcademicDepartmentQuery } = academicManagementApi
+export const { useGetAllAcademicSemesterQuery, useCreateAcademicSemesterMutation, useCreateAcademicDepartmentMutation, useGetAllAcademicDepartmentQuery, useGetAcademicFacultiesQuery } = academicManagementApi

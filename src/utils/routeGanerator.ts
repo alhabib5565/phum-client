@@ -2,7 +2,7 @@ import { ReactNode } from "react";
 import { TUserPath } from "../type";
 
 type TRoute = {
-    name: string;
+    name?: string;
     path?: string;
     element?: ReactNode;
 };
